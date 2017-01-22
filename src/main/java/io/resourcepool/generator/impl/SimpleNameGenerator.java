@@ -70,6 +70,7 @@ public class SimpleNameGenerator implements NameGenerator {
         }
       }
       fullNames.add(givenNameIterator.next().toFullName(surnameIterator.next()));
+      remaining--;
     }
     return fullNames;
   }
