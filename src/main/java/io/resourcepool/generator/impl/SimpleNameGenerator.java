@@ -29,7 +29,7 @@ public class SimpleNameGenerator implements NameGenerator {
   }
 
   @Override
-  public Collection<FullName> nextNames(Query query) {
+  public List<FullName> nextNames(Query query) {
     int maxItemsGivenNames = givenNamesDictionary.size(query.languages);
     int maxItemsSurnames = surnamesDictionary.size(query.languages);
     int maxItems = maxItemsGivenNames * maxItemsSurnames;
@@ -42,11 +42,11 @@ public class SimpleNameGenerator implements NameGenerator {
   }
 
   @Override
-  public Collection<FullName> nextNames(int count) {
+  public List<FullName> nextNames(int count) {
     return nextNames(new Query(count));
   }
 
-  private Collection<FullName> combineNames(Collection<GivenName> givenNames, Collection<String> surnames, int count) {
+  private List<FullName> combineNames(Collection<GivenName> givenNames, Collection<String> surnames, int count) {
     List<FullName> fullNames = new ArrayList<FullName>(count);
     Iterator<GivenName> givenNameIterator = givenNames.iterator();
     Iterator<String> surnameIterator = surnames.iterator();
@@ -75,18 +75,18 @@ public class SimpleNameGenerator implements NameGenerator {
   }
 
   @Override
-  public Collection<GivenName> nextGivenNames(int count) {
+  public List<GivenName> nextGivenNames(int count) {
     return givenNamesDictionary.pick(count);
   }
 
   @Override
-  public Collection<String> nextSurnames(int count) {
+  public List<String> nextSurnames(int count) {
     return surnamesDictionary.pick(count);
   }
 
   @Override
-  public Collection<String> nextNicknames(int count) {
-    Collection<GivenName> items = givenNamesDictionary.pick(count);
+  public List<String> nextNicknames(int count) {
+    List<GivenName> items = givenNamesDictionary.pick(count);
     List<String> nicknames = new ArrayList<String>(items.size());
     for (GivenName gn : items) {
       nicknames.add(gn.nickname);

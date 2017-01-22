@@ -46,12 +46,12 @@ public class FortunesDictionary implements Dictionary<Fortune> {
   }
 
   @Override
-  public Collection<Fortune> pick(int count) {
+  public List<Fortune> pick(int count) {
     return pick(new Query(count));
   }
 
   @Override
-  public Collection<Fortune> pick(Query query) {
+  public List<Fortune> pick(Query query) {
     if (query.count > size(query.languages)) {
       throw new IllegalArgumentException("Cannot pick more than " + size() + " elements in Fortunes Dictionary");
     }

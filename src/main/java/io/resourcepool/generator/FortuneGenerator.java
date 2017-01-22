@@ -3,7 +3,7 @@ package io.resourcepool.generator;
 import io.resourcepool.model.Fortune;
 import io.resourcepool.model.Language;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Name Generator.
@@ -12,8 +12,8 @@ import java.util.Collection;
  */
 public interface FortuneGenerator {
   
-  Collection<Fortune> nextFortunes(Query query);
-  Collection<Fortune> nextFortunes(int count);
+  List<Fortune> nextFortunes(Query query);
+  List<Fortune> nextFortunes(int count);
   Fortune nextFortune();
   Fortune nextFortune(Language language);
 }

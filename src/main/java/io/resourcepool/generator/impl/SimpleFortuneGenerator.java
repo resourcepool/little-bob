@@ -7,6 +7,7 @@ import io.resourcepool.model.Fortune;
 import io.resourcepool.model.Language;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Simple Fortune generator using the dictionaries provided in the classpath resources.
@@ -22,7 +23,7 @@ public class SimpleFortuneGenerator implements FortuneGenerator {
   }
   
   @Override
-  public Collection<Fortune> nextFortunes(Query query) {
+  public List<Fortune> nextFortunes(Query query) {
     int maxItems = dictionary.size(query.languages);
     if (query.count > maxItems) {
       throw new IllegalArgumentException("Cannot pick more than " + maxItems + " elements in the Dictionary");
@@ -31,7 +32,7 @@ public class SimpleFortuneGenerator implements FortuneGenerator {
   }
 
   @Override
-  public Collection<Fortune> nextFortunes(int count) {
+  public List<Fortune> nextFortunes(int count) {
     return nextFortunes(new Query(count));
   }
 

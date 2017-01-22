@@ -47,12 +47,12 @@ public class GivenNamesDictionary implements Dictionary<GivenName> {
   }
 
   @Override
-  public Collection<GivenName> pick(int count) {
+  public List<GivenName> pick(int count) {
     return pick(new Query(count));
   }
 
   @Override
-  public Collection<GivenName> pick(Query query) {
+  public List<GivenName> pick(Query query) {
     if (query.count > size()) {
       throw new IllegalArgumentException("Cannot pick more than " + size() + " elements in GivenNames Dictionary");
     }

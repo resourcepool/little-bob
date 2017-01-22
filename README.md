@@ -47,7 +47,7 @@ Fortune f = generator.nextFortune(Language.FRENCH);
 
 Generate a list of 100 fortunes in any language:
 ```java
-Collection<Fortune> f = generator.nextFortunes(100);
+List<Fortune> f = generator.nextFortunes(100);
 ```
 
 Generate a list of 100 fortunes in FRENCH
@@ -56,7 +56,7 @@ Query q = Query.builder()
                .count(100)
                .languages(Language.FRENCH)
                .build();
-Collection<Fortune> f = generator.nextFortunes(q);
+List<Fortune> f = generator.nextFortunes(q);
 ```
 
 
@@ -81,7 +81,7 @@ public class Main {
     System.out.println(f.source);
     
     // Generate 100 fortunes in English or French
-    Collection<Fortune> fortunes = generator.nextFortunes(
+    List<Fortune> fortunes = generator.nextFortunes(
       Query.builder()
            .count(100)
            .languages(Language.ENGLISH, Language.FRENCH)
@@ -112,7 +112,7 @@ String surname = generator.nextSurname();
 
 Generate a list of 100 names in any language:
 ```java
-Collection<FullName> fns = generator.nextNames(100);
+List<FullName> fns = generator.nextNames(100);
 ```
 
 Generate a list of 100 names in FRENCH
@@ -121,7 +121,7 @@ Query q = Query.builder()
                .count(100)
                .languages(Language.FRENCH)
                .build();
-Collection<FullName> f = generator.nextNames(q);
+List<FullName> f = generator.nextNames(q);
 ```
 
 
@@ -139,7 +139,7 @@ public class Main {
     System.out.println(fn.nickname);
     
     // Generate 100 names in English or French
-    Collection<FullName> accomplices = generator.nextNames(
+    List<FullName> accomplices = generator.nextNames(
       Query.builder()
            .count(100)
            .languages(Language.ENGLISH, Language.FRENCH)

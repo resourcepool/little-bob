@@ -6,7 +6,6 @@ import io.resourcepool.generator.Query;
 import io.resourcepool.model.Language;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -45,12 +44,12 @@ public class SurnamesDictionary implements Dictionary<String> {
   }
 
   @Override
-  public Collection<String> pick(int count) {
+  public List<String> pick(int count) {
     return pick(new Query(count));
   }
 
   @Override
-  public Collection<String> pick(Query query) {
+  public List<String> pick(Query query) {
     if (query.count > size()) {
       throw new IllegalArgumentException("Cannot pick more than " + size() + " elements in Surnames Dictionary");
     }
