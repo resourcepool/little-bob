@@ -7,12 +7,12 @@
   <groupId>io.resourcepool</groupId>
   <artifactId>little-bob</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <!-- Project headers-->
   <name>Little Bob</name>
   <description>A Java word / name / sentence generator</description>
   <url>https://github.com/resourcepool/little-bob</url>
-  
+
   <!-- License -->
   <licenses>
     <license>
@@ -21,7 +21,7 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
+
   <!-- Developers -->
   <developers>
     <developer>
@@ -82,7 +82,7 @@
       </build>
     </profile>
   </profiles>
-  
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.6</java.version>
@@ -93,7 +93,7 @@
     <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
   </properties>
-  
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -131,7 +131,7 @@
         <version>${nexus-staging-maven.version}</version>
         <extensions>true</extensions>
         <configuration>
-          <serverId>resourcepool</serverId>
+          <serverId>ossrh</serverId>
           <nexusUrl>https://oss.sonatype.org/</nexusUrl>
           <autoReleaseAfterClose>true</autoReleaseAfterClose>
         </configuration>
@@ -166,5 +166,5 @@
       </plugin>
     </plugins>
   </build>
-  
+
 </project>
