@@ -1,6 +1,6 @@
 # Little bob
 
-A simple human name and sentence generator in your language.
+A simple human and sentence generator in your language.
 
 Make up names, nicknames, and find sample textual content for your applications, using the provided dictionaries.
 
@@ -14,7 +14,7 @@ With Little Bob, you can generate lots of FullNames (given name, surname, nickna
 Current supported languages: **FRENCH, ENGLISH**
 
 ## Compatibility / Setup
-The sources are compatible with JDK 6+.
+The sources are compatible with Java 8+.
 
 To use the library with maven, add these lines to your **pom.xml** file:
 
@@ -22,7 +22,7 @@ To use the library with maven, add these lines to your **pom.xml** file:
 <dependency>
  <groupId>io.resourcepool</groupId>
  <artifactId>little-bob</artifactId>
- <version>1.0</version>
+ <version>2.0.0</version>
 </dependency>
 ```
 
@@ -95,24 +95,24 @@ public class Main {
 
 For starters, initialize your generator (ideally as a class attribute):
 ```java
-NameGenerator generator = new SimpleNameGenerator();
+PersonGenerator generator = new SimplePersonGenerator();
 ```
 
 Generate a name in any language:
 ```java
-// Full name (given name, surname, nickname, gender)
-FullName fn = generator.nextName();
-// Given name (given name, nickname, gender)
-GivenName gn = generator.nextGivenName();
+// Full name (firstName, lastName, nickname, age, gender, email)
+FullName fn = generator.nextPerson();
+// Given name (given name, gender, language)
+GivenName gn = generator.nextFirstName();
 // Nickname
 String nick = generator.nextNickname();
 // Surname
-String surname = generator.nextSurname();
+String surname = generator.nextLastName();
 ```
 
 Generate a list of 100 names in any language:
 ```java
-List<FullName> fns = generator.nextNames(100);
+List<Person> fns = generator.nextPersons(100);
 ```
 
 Generate a list of 100 names in FRENCH
@@ -121,7 +121,7 @@ Query q = Query.builder()
                .count(100)
                .languages(Language.FRENCH)
                .build();
-List<FullName> f = generator.nextNames(q);
+List<Person> f = generator.nextPersons(q);
 ```
 
 
@@ -139,7 +139,7 @@ public class Main {
     System.out.println(fn.nickname);
     
     // Generate 100 names in English or French
-    List<FullName> accomplices = generator.nextNames(
+    List<Person> accomplices = generator.nextPersons(
       Query.builder()
            .count(100)
            .languages(Language.ENGLISH, Language.FRENCH)

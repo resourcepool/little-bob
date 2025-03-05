@@ -1,7 +1,7 @@
 package io.resourcepool.dictionary.loader;
 
 import io.resourcepool.model.Gender;
-import io.resourcepool.model.GivenName;
+import io.resourcepool.model.FirstNameAndGenderPartial;
 import io.resourcepool.model.Language;
 
 import java.io.BufferedReader;
@@ -25,7 +25,7 @@ public class NameLoader {
   private static final String EXTENSION = ".txt";
   private static final Charset CHARSET = Charset.forName("UTF-8");
 
-  public static List<GivenName> loadGivenNames(Language language) {
+  public static List<FirstNameAndGenderPartial> loadFirstNames(Language language) {
     return parseNames(language);
   }
 
@@ -49,14 +49,14 @@ public class NameLoader {
     }
   }
 
-  private static List<GivenName> parseNames(Language language) {
-    List<GivenName> givenNames = new LinkedList<GivenName>();
+  private static List<FirstNameAndGenderPartial> parseNames(Language language) {
+    List<FirstNameAndGenderPartial> givenNames = new LinkedList<FirstNameAndGenderPartial>();
     BufferedReader br = new BufferedReader(new InputStreamReader(getResource(FIRST_NAMES_FILE, language), CHARSET));
     try {
       String name;
       while ((name = br.readLine()) != null) {
         String[] nameContent = name.split(",");
-        givenNames.add(new GivenName(nameContent[0], nameContent[1], Gender.parse(nameContent[2])));
+        givenNames.add(new FirstNameAndGenderPartial(nameContent[0], Gender.parse(nameContent[1]), language));
       }
       return givenNames;
     } catch (IOException e) {

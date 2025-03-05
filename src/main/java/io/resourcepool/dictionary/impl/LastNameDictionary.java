@@ -17,24 +17,24 @@ import java.util.Map;
  * Contains surnames in each language
  * @author Loïc Ortola
  */
-public class SurnamesDictionary implements Dictionary<String> {
-  
-  private final Map<Language, List<String>> surnames;
+public class LastNameDictionary implements Dictionary<String> {
 
-  public SurnamesDictionary() {
-    this.surnames = new HashMap<Language, List<String>>();
-    surnames.put(Language.ENGLISH, new ArrayList<String>(NameLoader.loadSurnames(Language.ENGLISH)));
-    surnames.put(Language.FRENCH, new ArrayList<String>(NameLoader.loadSurnames(Language.FRENCH)));
+  private final Map<Language, List<String>> lastNames;
+
+  public LastNameDictionary() {
+    this.lastNames = new HashMap<Language, List<String>>();
+    lastNames.put(Language.ENGLISH, new ArrayList<String>(NameLoader.loadSurnames(Language.ENGLISH)));
+    lastNames.put(Language.FRENCH, new ArrayList<String>(NameLoader.loadSurnames(Language.FRENCH)));
   }
 
-  protected Map<Language, List<String>> getSurnames() {
-    return surnames;
+  protected Map<Language, List<String>> getLastNames() {
+    return lastNames;
   }
 
   @Override
   public String pick(Language randomLanguage) {
-    List<String> items = this.surnames.get(randomLanguage);
-    return items.get((int) Math.random() * items.size());
+    List<String> items = this.lastNames.get(randomLanguage);
+    return items.get((int) (Math.random() * items.size()));
   }
 
   @Override
@@ -55,14 +55,14 @@ public class SurnamesDictionary implements Dictionary<String> {
     }
     List<String> items = getEditableDictionary(query.languages);
     Collections.shuffle(items);
-    return items.subList(0, query.count);
+    return new LinkedList<>(items.subList(0, query.count));
   }
 
   @Override
   public int size(Language... languages) {
     int size = 0;
     for (Language l : languages) {
-      size += surnames.get(l).size();
+      size += lastNames.get(l).size();
     }
     return size;
   }
@@ -72,11 +72,11 @@ public class SurnamesDictionary implements Dictionary<String> {
     return size(Language.values());
   }
 
-  
+
   private List<String> getEditableDictionary(Language... languages) {
     List<String> values = new LinkedList<String>();
     for (Language l : languages) {
-      values.addAll(surnames.get(l));
+      values.addAll(lastNames.get(l));
     }
     return values;
   }

@@ -3,10 +3,10 @@ package io.resourcepool.model;
 /**
  * Represents a fortune saying or quote. Contains a text and a source.
  *
- * @author Loïc Ortola on 22/01/2017
+ * @author Loïc Ortola
  */
 public class Fortune implements Cloneable {
-  
+
   public final String text;
   public final String source;
 

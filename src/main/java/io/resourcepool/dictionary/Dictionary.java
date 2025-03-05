@@ -6,12 +6,12 @@ import io.resourcepool.model.Language;
 import java.util.List;
 
 /**
- * Represents a multi-lingual dictionary for any generic type of data.
+ * Represents a multilingual dictionary for any generic type of data.
  *
  * @author Loïc Ortola
  */
 public interface Dictionary<T> {
-  
+
   T pick(Language language);
 
   T pick();

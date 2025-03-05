@@ -10,13 +10,13 @@ import java.util.Collection;
 /**
  * @author Loïc Ortola
  */
-public class SurnamesDictionaryTest {
+public class LastNameDictionaryTest {
 
-  private SurnamesDictionary dictionary = new SurnamesDictionary();
+  private LastNameDictionary dictionary = new LastNameDictionary();
 
-  private static final int FRENCH_DICTIONARY_SIZE = 10000;
-  private static final int ALL_DICTIONARY_SIZE = 20000;
-  
+  private static final int FRENCH_DICTIONARY_SIZE = 9620;
+  private static final int ALL_DICTIONARY_SIZE = 10000 + 9620;
+
   @Test
   public void testSizeOneLanguage() {
     Assert.assertEquals(FRENCH_DICTIONARY_SIZE, dictionary.size(Language.FRENCH));
@@ -26,7 +26,7 @@ public class SurnamesDictionaryTest {
   public void testSizeAllLanguages() {
     Assert.assertEquals(ALL_DICTIONARY_SIZE, dictionary.size());
   }
-  
+
   @Test(expected = IllegalArgumentException.class)
   public void testIllegalCountTooBig() {
     dictionary.pick(ALL_DICTIONARY_SIZE + 1);
