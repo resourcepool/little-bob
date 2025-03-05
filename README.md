@@ -22,7 +22,7 @@ To use the library with maven, add these lines to your **pom.xml** file:
 <dependency>
  <groupId>io.resourcepool</groupId>
  <artifactId>little-bob</artifactId>
- <version>2.0.1</version>
+ <version>2.1.0-SNAPSHOT</version>
 </dependency>
 ```
 
